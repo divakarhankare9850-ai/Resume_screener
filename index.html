@@ -1,0 +1,771 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/3.35.0/tabler-icons.min.css">
+
+<style>
+:root{
+  --color-background-primary:#ffffff;
+  --color-background-secondary:#f5f7fa;
+  --color-background-tertiary:#eef1f6;
+  --color-text-primary:#1a1d24;
+  --color-text-secondary:#5b6472;
+  --color-text-tertiary:#98a0ac;
+  --color-border-secondary:#e1e5eb;
+  --color-border-tertiary:#ebeef3;
+  --font-sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);color:var(--color-text-primary);background:var(--color-background-tertiary);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+:focus-visible{outline:2px solid #378ADD;outline-offset:2px;border-radius:4px}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
+.wrap{max-width:860px;margin:0 auto;padding:18px 14px 60px}
+.topbar{display:flex;align-items:center;gap:12px;padding:13px 18px;background:var(--color-background-primary);border:1px solid var(--color-border-secondary);border-radius:12px;margin-bottom:18px;box-shadow:0 1px 2px rgba(15,23,32,.04);flex-wrap:wrap}
+.logo{width:36px;height:36px;background:linear-gradient(135deg,#185FA5,#0C447C);border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:19px;flex-shrink:0}
+.topbar h1{font-size:15px;font-weight:600}
+.topbar p{font-size:12px;color:var(--color-text-secondary);margin-top:1px}
+.tb-r{margin-left:auto;display:flex;align-items:center;gap:8px}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:6px 11px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid transparent;transition:all .15s;white-space:nowrap}
+.pill-ok{background:#EAF3DE;color:#27500A;border-color:#c3dba0}
+.pill-warn{background:#FAEEDA;color:#633806;border-color:#edcf9a}
+.pill:hover{filter:brightness(.96)}
+.icon-btn{width:34px;height:34px;border-radius:9px;border:1px solid var(--color-border-secondary);background:var(--color-background-primary);color:var(--color-text-secondary);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s;flex-shrink:0}
+.icon-btn:hover{background:var(--color-background-secondary);color:var(--color-text-primary)}
+.icon-btn.lg{width:38px;height:38px;font-size:16px}
+.nav{display:flex;gap:2px;background:var(--color-background-secondary);border:1px solid var(--color-border-secondary);border-radius:10px;padding:3px;width:fit-content;margin-bottom:18px}
+.nb{padding:7px 16px;border-radius:7px;border:none;background:transparent;cursor:pointer;font-size:13px;font-weight:500;color:var(--color-text-secondary);display:flex;align-items:center;gap:6px;transition:all .15s}
+.nb i{font-size:14px}
+.nb.on{background:var(--color-background-primary);color:var(--color-text-primary);border:1px solid var(--color-border-secondary);box-shadow:0 1px 2px rgba(15,23,32,.05)}
+.nb:not(.on):hover{color:var(--color-text-primary)}
+.card{background:var(--color-background-primary);border:1px solid var(--color-border-secondary);border-radius:14px;padding:20px;margin-bottom:16px;box-shadow:0 1px 2px rgba(15,23,32,.04)}
+.ch{display:flex;align-items:center;gap:10px;padding-bottom:13px;margin-bottom:14px;border-bottom:1px solid var(--color-border-tertiary)}
+.ch-icon{font-size:17px;color:#185FA5}
+.ch h2{font-size:14px;font-weight:600;line-height:1.2}
+.ch p{font-size:11px;color:var(--color-text-secondary);margin-top:1px}
+.ch-r{margin-left:auto;display:flex;gap:6px;align-items:center}
+lbl{display:block;font-size:11px;font-weight:600;color:var(--color-text-secondary);letter-spacing:.04em;text-transform:uppercase;margin-bottom:5px}
+textarea{width:100%;padding:10px 12px;border:1.5px solid var(--color-border-secondary);border-radius:9px;background:var(--color-background-secondary);color:var(--color-text-primary);font-size:13px;line-height:1.6;resize:vertical;min-height:100px;font-family:inherit}
+textarea:focus{outline:none;border-color:#378ADD}
+.or{display:flex;align-items:center;gap:10px;margin:10px 0;font-size:12px;color:var(--color-text-tertiary)}
+.or::before,.or::after{content:'';flex:1;height:1px;background:var(--color-border-tertiary)}
+.dz{border:1.5px dashed var(--color-border-secondary);border-radius:10px;padding:20px;text-align:center;cursor:pointer;position:relative;background:var(--color-background-secondary);transition:all .15s}
+.dz:hover,.dz.over{border-color:#378ADD;background:#E6F1FB}
+.dz input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.dz-icon{font-size:24px;color:var(--color-text-tertiary);margin-bottom:5px}
+.dz p{font-size:13px;color:var(--color-text-secondary);font-weight:500}
+.dz span{font-size:11px;color:var(--color-text-tertiary)}
+.fp-list{display:flex;flex-direction:column;gap:5px;margin-top:10px}
+.fp{display:flex;align-items:center;gap:8px;padding:8px 11px;background:var(--color-background-secondary);border:1px solid var(--color-border-tertiary);border-radius:8px;font-size:13px}
+.fp-n{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500}
+.fp-s{color:var(--color-text-tertiary);font-size:11px;flex-shrink:0}
+.fp-x{border:none;background:none;cursor:pointer;color:var(--color-text-tertiary);padding:3px;border-radius:4px;display:flex;align-items:center;font-size:15px;transition:all .15s}
+.fp-x:hover{color:#791F1F;background:#FCEBEB}
+.acts{display:flex;gap:9px;align-items:center;margin-top:4px;flex-wrap:wrap}
+.bp{padding:10px 22px;border-radius:10px;border:none;background:#185FA5;color:#fff;cursor:pointer;font-size:13.5px;font-weight:600;display:inline-flex;align-items:center;gap:7px;transition:all .15s;box-shadow:0 1px 2px rgba(24,95,165,.25)}
+.bp:hover:not(:disabled){background:#0C447C;transform:translateY(-1px);box-shadow:0 4px 10px rgba(24,95,165,.3)}
+.bp:active:not(:disabled){transform:translateY(0)}
+.bp:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+.bs{padding:9px 16px;border-radius:9px;border:1.5px solid var(--color-border-secondary);background:var(--color-background-primary);color:var(--color-text-secondary);cursor:pointer;font-size:13px;font-weight:500;display:inline-flex;align-items:center;gap:6px;transition:all .15s}
+.bs:hover{background:var(--color-background-secondary);color:var(--color-text-primary)}
+.link-btn{background:none;border:none;color:inherit;text-decoration:underline;cursor:pointer;font:inherit;padding:0}
+.alert{display:flex;align-items:flex-start;gap:9px;padding:11px 14px;border-radius:9px;font-size:13px;margin-bottom:12px;border:1.5px solid;line-height:1.5}
+.alert i{font-size:16px;flex-shrink:0;margin-top:1px}
+.al-info{background:#E6F1FB;border-color:#85B7EB;color:#0C447C}
+.al-err{background:#FCEBEB;border-color:#F09595;color:#791F1F}
+.al-ok{background:#EAF3DE;border-color:#97C459;color:#27500A}
+.dots span{width:5px;height:5px;border-radius:50%;display:inline-block;background:currentColor;animation:bl 1.2s infinite;margin:0 1px}
+.dots span:nth-child(2){animation-delay:.2s}
+.dots span:nth-child(3){animation-delay:.4s}
+@keyframes bl{0%,80%,100%{opacity:.25;transform:scale(.7)}40%{opacity:1;transform:scale(1)}}
+.mg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.mc{background:var(--color-background-primary);border:1px solid var(--color-border-secondary);border-radius:10px;padding:13px 15px;box-shadow:0 1px 2px rgba(15,23,32,.03)}
+.mc-l{font-size:11px;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.mc-v{font-size:23px;font-weight:600}
+.mc-s{font-size:11px;color:var(--color-text-tertiary);margin-top:2px}
+table{width:100%;border-collapse:collapse;table-layout:fixed}
+th{font-size:11px;font-weight:600;color:var(--color-text-secondary);text-align:left;padding:9px 12px;border-bottom:1.5px solid var(--color-border-secondary);background:var(--color-background-secondary);text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+td{padding:10px 12px;border-bottom:1px solid var(--color-border-tertiary);font-size:13px;vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tbody tr{cursor:pointer;transition:background .1s}
+tbody tr:hover{background:var(--color-background-secondary)}
+.sb{height:5px;background:var(--color-background-secondary);border-radius:3px;overflow:hidden;display:inline-block;width:55px;vertical-align:middle;margin-left:5px;border:1px solid var(--color-border-tertiary)}
+.sf{height:100%;border-radius:3px}
+.badge{display:inline-flex;padding:3px 8px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap}
+.bex{background:#EAF3DE;color:#27500A}
+.bgo{background:#E6F1FB;color:#0C447C}
+.bmo{background:#FAEEDA;color:#633806}
+.bpo{background:#FCEBEB;color:#791F1F}
+.chip{display:inline-flex;padding:2px 8px;background:var(--color-background-secondary);border:1px solid var(--color-border-tertiary);border-radius:20px;font-size:11px;color:var(--color-text-secondary);margin:2px}
+.cm{background:#EAF3DE;border-color:#97C459;color:#27500A}
+.cx{background:#FCEBEB;border-color:#F09595;color:#791F1F}
+.back{display:flex;align-items:center;gap:5px;font-size:13px;color:var(--color-text-secondary);cursor:pointer;border:none;background:none;padding:0;margin-bottom:14px}
+.back:hover{color:var(--color-text-primary)}
+.av{width:44px;height:44px;border-radius:50%;background:#E6F1FB;color:#0C447C;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;flex-shrink:0;border:2px solid #85B7EB}
+.dv{height:1px;background:var(--color-border-tertiary);margin:13px 0}
+.pr{margin-bottom:8px}
+.pl{display:flex;justify-content:space-between;font-size:12px;color:var(--color-text-secondary);margin-bottom:3px}
+.pb{height:7px;background:var(--color-background-secondary);border-radius:4px;overflow:hidden;border:1px solid var(--color-border-tertiary)}
+.pf{height:100%;border-radius:4px;transition:width .5s ease}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.si{display:flex;align-items:flex-start;gap:7px;font-size:13px;margin-bottom:7px;line-height:1.4}
+.esel{padding:6px 10px;border:1.5px solid var(--color-border-secondary);border-radius:8px;background:var(--color-background-primary);color:var(--color-text-primary);font-size:12px;cursor:pointer}
+.xbtn{padding:6px 12px;border:1.5px solid var(--color-border-secondary);border-radius:8px;background:var(--color-background-primary);color:var(--color-text-secondary);cursor:pointer;font-size:12px;display:flex;align-items:center;gap:5px;transition:all .15s}
+.xbtn:hover{background:var(--color-background-secondary);color:var(--color-text-primary)}
+.bc{display:flex;align-items:flex-end;gap:5px;height:130px;padding-bottom:22px;position:relative}
+.bb{flex:1;border-radius:4px 4px 0 0;min-height:3px;position:relative;cursor:pointer;transition:opacity .15s}
+.bb:hover{opacity:.75}
+.bl{position:absolute;bottom:-19px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--color-text-secondary);white-space:nowrap;overflow:hidden;max-width:46px;text-overflow:ellipsis}
+.bv{position:absolute;top:-15px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:600;white-space:nowrap}
+.pr-row{display:flex;align-items:center;gap:8px;font-size:12px}
+.pd{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.empty{display:flex;flex-direction:column;align-items:center;gap:10px;padding:3rem 1rem;text-align:center}
+.empty i{font-size:30px;opacity:.3}
+.empty span{font-size:13.5px;color:var(--color-text-secondary)}
+
+.modal-ov{position:fixed;inset:0;background:rgba(15,23,32,.45);backdrop-filter:blur(2px);display:flex;align-items:center;justify-content:center;z-index:100;padding:18px;animation:fadeIn .15s ease}
+.modal{background:var(--color-background-primary);border-radius:14px;width:100%;max-width:440px;max-height:88vh;overflow-y:auto;box-shadow:0 20px 60px rgba(15,23,32,.25);border:1px solid var(--color-border-secondary);animation:modalIn .18s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes modalIn{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.modal-h{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:18px 18px 14px;border-bottom:1px solid var(--color-border-tertiary)}
+.modal-h h3{font-size:16px;font-weight:600}
+.modal-h p{font-size:12px;color:var(--color-text-secondary);margin-top:2px}
+.modal-b{padding:16px 18px}
+.modal-f{display:flex;gap:8px;justify-content:flex-end;padding:14px 18px;border-top:1px solid var(--color-border-tertiary)}
+.seg{display:flex;gap:6px;margin-bottom:16px}
+.seg-b{flex:1;padding:9px 10px;border-radius:9px;border:1.5px solid var(--color-border-secondary);background:var(--color-background-secondary);color:var(--color-text-secondary);font-size:12.5px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .15s}
+.seg-b.on{background:#E6F1FB;border-color:#378ADD;color:#0C447C}
+.seg-tag{font-size:9px;background:#5b6472;color:#fff;padding:1px 5px;border-radius:8px;font-weight:700;letter-spacing:.02em}
+.seg-b.on .seg-tag{background:#185FA5}
+.modal input[type=text],.modal input[type=password],.modal input:not([type]){width:100%;padding:9px 11px;border:1.5px solid var(--color-border-secondary);border-radius:8px;background:var(--color-background-secondary);color:var(--color-text-primary);font-size:13px;font-family:inherit}
+.modal input:focus{outline:none;border-color:#378ADD}
+.key-row{display:flex;gap:6px}
+.key-row input{flex:1}
+.hint{font-size:11.5px;color:var(--color-text-tertiary);margin-top:6px;line-height:1.5}
+.hint a{color:#185FA5}
+.test-note{font-size:11px;color:var(--color-text-tertiary);margin-top:10px;padding-top:10px;border-top:1px dashed var(--color-border-tertiary);line-height:1.5}
+
+@media (max-width:640px){
+  .mg{grid-template-columns:repeat(2,1fr)}
+  .two{grid-template-columns:1fr}
+  .wrap{padding:14px 10px 50px}
+}
+</style>
+
+<div class="wrap">
+<div class="topbar">
+  <div class="logo"><i class="ti ti-users" aria-hidden="true"></i></div>
+  <div>
+    <h1>Resume Screener AI</h1>
+    <p>Upload a JD + resumes — AI ranks candidates automatically</p>
+  </div>
+  <div class="tb-r">
+    <span class="pill" id="connPill" onclick="openSet()" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openSet()"></span>
+    <button class="icon-btn lg" onclick="openSet()" aria-label="AI provider settings" title="AI provider settings"><i class="ti ti-settings" aria-hidden="true"></i></button>
+  </div>
+</div>
+
+<nav class="nav">
+  <button class="nb on" id="nb-u" onclick="go('u')"><i class="ti ti-upload" aria-hidden="true"></i>Upload</button>
+  <button class="nb" id="nb-r" onclick="go('r')"><i class="ti ti-list-details" aria-hidden="true"></i>Results</button>
+  <button class="nb" id="nb-a" onclick="go('a')"><i class="ti ti-chart-bar" aria-hidden="true"></i>Analytics</button>
+</nav>
+
+<div id="pg-u">
+  <div id="cfgNotice"></div>
+  <div class="card">
+    <div class="ch"><i class="ti ti-file-description ch-icon" aria-hidden="true"></i><div><h2>Job description</h2><p>Paste text or upload a file</p></div></div>
+    <lbl>Paste JD text</lbl>
+    <textarea id="jd" placeholder="Paste the full job description here — required skills, experience, education, certifications..."></textarea>
+    <div class="or">or upload a file</div>
+    <div class="dz" id="jd-dz" ondragover="event.preventDefault();this.classList.add('over')" ondragleave="this.classList.remove('over')" ondrop="djd(event)">
+      <input type="file" accept=".pdf,.docx,.txt" onchange="ljdf(this.files[0])" id="jd-fi">
+      <div class="dz-icon"><i class="ti ti-file-upload" aria-hidden="true"></i></div>
+      <p>Click to browse or drag a file here</p>
+      <span>PDF · DOCX · TXT</span>
+    </div>
+    <div id="jd-ok" style="display:none;margin-top:8px"></div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><i class="ti ti-files ch-icon" aria-hidden="true"></i><div><h2>Candidate resumes</h2><p>Upload one or more resumes to screen</p></div></div>
+    <div class="dz" id="r-dz" ondragover="event.preventDefault();this.classList.add('over')" ondragleave="this.classList.remove('over')" ondrop="dres(event)">
+      <input type="file" accept=".pdf,.docx,.txt" multiple onchange="arf(this.files)" id="r-fi">
+      <div class="dz-icon"><i class="ti ti-cloud-upload" aria-hidden="true"></i></div>
+      <p>Drag & drop resumes here, or click to browse</p>
+      <span>Multiple files · PDF · DOCX · TXT</span>
+    </div>
+    <div class="fp-list" id="r-list"></div>
+  </div>
+
+  <div id="sta"></div>
+  <div class="acts">
+    <button class="bp" onclick="run()" id="rbtn"><i class="ti ti-brain" aria-hidden="true"></i>Analyze resumes</button>
+    <button class="bs" onclick="clr()"><i class="ti ti-eraser" aria-hidden="true"></i>Clear all</button>
+  </div>
+</div>
+
+<div id="pg-r" style="display:none">
+  <div id="dv" style="display:none"></div>
+  <div id="lv">
+    <div class="mg" id="mr"></div>
+    <div class="card">
+      <div class="ch">
+        <i class="ti ti-award ch-icon" aria-hidden="true"></i>
+        <div><h2>Candidate rankings</h2><p>Click any row to view full report</p></div>
+        <div class="ch-r">
+          <select class="esel" id="cf" onchange="rt()">
+            <option value="">All categories</option>
+            <option>Excellent</option><option>Good</option><option>Moderate</option><option>Poor</option>
+          </select>
+          <button class="xbtn" onclick="dcsv()"><i class="ti ti-download" style="font-size:13px" aria-hidden="true"></i>CSV</button>
+          <button class="xbtn" onclick="djson()"><i class="ti ti-download" style="font-size:13px" aria-hidden="true"></i>JSON</button>
+        </div>
+      </div>
+      <div style="overflow-x:auto">
+        <table>
+          <thead><tr>
+            <th style="width:30px">#</th>
+            <th style="width:175px">Candidate</th>
+            <th style="width:125px">Match</th>
+            <th style="width:85px">Category</th>
+            <th style="width:190px">Skills matched</th>
+            <th style="width:60px">Exp.</th>
+            <th style="width:135px">Recommendation</th>
+          </tr></thead>
+          <tbody id="tb"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="pg-a" style="display:none">
+  <div class="mg" id="am"></div>
+  <div class="two" style="margin-bottom:12px">
+    <div class="card">
+      <div class="ch"><i class="ti ti-chart-bar ch-icon" aria-hidden="true"></i><div><h2>Score distribution</h2></div></div>
+      <div class="bc" id="bc"></div>
+    </div>
+    <div class="card">
+      <div class="ch"><i class="ti ti-chart-pie ch-icon" aria-hidden="true"></i><div><h2>Category breakdown</h2></div></div>
+      <div id="pc" style="margin-top:6px"></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="ch"><i class="ti ti-zoom-exclamation ch-icon" aria-hidden="true"></i><div><h2>Skill gap analysis</h2><p>Most commonly missing skills across candidates</p></div></div>
+    <div id="sg"></div>
+  </div>
+</div>
+
+<div class="modal-ov" id="setOv" style="display:none" onclick="if(event.target===this)closeSet()">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="setTitle">
+    <div class="modal-h">
+      <div>
+        <h3 id="setTitle">AI provider</h3>
+        <p>Choose what powers the resume analysis</p>
+      </div>
+      <button class="icon-btn" onclick="closeSet()" aria-label="Close settings"><i class="ti ti-x" aria-hidden="true"></i></button>
+    </div>
+    <div class="modal-b">
+      <lbl>Provider</lbl>
+      <div class="seg" id="provSeg">
+        <button type="button" class="seg-b" data-p="pollinations" onclick="setProv('pollinations')">Pollinations <span class="seg-tag">Free</span></button>
+        <button type="button" class="seg-b" data-p="custom" onclick="setProv('custom')">Custom endpoint</button>
+      </div>
+      <div id="provFields"></div>
+      <div id="testRes"></div>
+      <p class="test-note">Settings save automatically when this runs inside Claude. Opened as a standalone file, your key stays in memory only and clears on refresh — it's never written to browser storage.</p>
+    </div>
+    <div class="modal-f">
+      <button class="bs" onclick="testConn()" id="testBtn"><i class="ti ti-plug-connected" aria-hidden="true"></i>Test connection</button>
+      <button class="bp" onclick="saveSet()"><i class="ti ti-device-floppy" aria-hidden="true"></i>Save settings</button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+if(typeof pdfjsLib!=='undefined')pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+const S={resFiles:[],cands:[]};
+
+/* ---------- AI provider config ---------- */
+const POLLINATIONS_BASE='https://gen.pollinations.ai/v1/chat/completions';
+let CFG={provider:'pollinations',apiKey:'',model:'openai',baseUrl:''};
+
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+async function loadCfg(){
+  try{
+    if(window.storage&&window.storage.get){
+      const r=await window.storage.get('ai-settings',false);
+      if(r&&r.value){const parsed=JSON.parse(r.value);CFG=Object.assign(CFG,parsed);}
+    }
+  }catch(e){/* no saved settings yet, or storage unavailable outside Claude — fine, defaults stand */}
+}
+async function saveCfg(){
+  try{ if(window.storage&&window.storage.set) await window.storage.set('ai-settings',JSON.stringify(CFG),false); }
+  catch(e){/* storage unavailable outside Claude — settings just live in memory for this session */}
+}
+
+function isConfigured(){
+  if(CFG.provider==='pollinations')return !!CFG.apiKey;
+  return !!(CFG.baseUrl&&CFG.baseUrl.trim());
+}
+function provLabel(){
+  if(CFG.provider==='pollinations')return 'Pollinations';
+  try{return new URL(CFG.baseUrl).hostname;}catch(e){return 'Custom endpoint';}
+}
+function updateConnPill(){
+  const ok=isConfigured();
+  const el=document.getElementById('connPill');
+  el.className='pill '+(ok?'pill-ok':'pill-warn');
+  el.innerHTML=ok?`<i class="ti ti-plug-connected" aria-hidden="true"></i> ${esc(provLabel())}`:`<i class="ti ti-plug-connected-x" aria-hidden="true"></i> Set up AI`;
+  updateConfigNotice();
+}
+function updateConfigNotice(){
+  const el=document.getElementById('cfgNotice');
+  if(!el)return;
+  el.innerHTML=isConfigured()?'':`<div class="alert al-info"><i class="ti ti-info-circle" aria-hidden="true"></i><span>Set up your AI provider before running an analysis. <button class="link-btn" onclick="openSet()">Open settings →</button></span></div>`;
+}
+
+function openSet(){
+  document.querySelectorAll('#provSeg .seg-b').forEach(b=>b.classList.toggle('on',b.dataset.p===CFG.provider));
+  renderProvFields();
+  document.getElementById('testRes').innerHTML='';
+  document.getElementById('setOv').style.display='flex';
+}
+function closeSet(){document.getElementById('setOv').style.display='none';}
+
+function setProv(p){
+  CFG.provider=p;
+  if(p==='pollinations'&&!CFG.model)CFG.model='openai';
+  document.querySelectorAll('#provSeg .seg-b').forEach(b=>b.classList.toggle('on',b.dataset.p===p));
+  renderProvFields();
+}
+
+function renderProvFields(){
+  const el=document.getElementById('provFields');
+  if(CFG.provider==='pollinations'){
+    el.innerHTML=`
+      <lbl>API key <span style="font-weight:400;text-transform:none;letter-spacing:0">(required)</span></lbl>
+      <div class="key-row">
+        <input type="password" id="f-key" placeholder="pk_... or sk_..." value="${esc(CFG.apiKey)}" autocomplete="off">
+        <button class="icon-btn" type="button" onclick="togglePw(this)" aria-label="Show key"><i class="ti ti-eye" aria-hidden="true"></i></button>
+      </div>
+      <p class="hint">Get a free key at <a href="https://enter.pollinations.ai" target="_blank" rel="noopener">enter.pollinations.ai ↗</a> — publishable keys are safe for this kind of in-browser use.</p>
+      <lbl style="margin-top:12px">Model</lbl>
+      <input list="modelList" id="f-model" value="${esc(CFG.model||'openai')}" placeholder="openai">
+      <datalist id="modelList">
+        <option value="openai"><option value="openai-fast"><option value="openai-large"><option value="mistral"><option value="deepseek">
+      </datalist>
+      <p class="hint">See all available models at <a href="https://gen.pollinations.ai/v1/models" target="_blank" rel="noopener">gen.pollinations.ai/v1/models ↗</a></p>`;
+  }else{
+    el.innerHTML=`
+      <lbl>Base URL</lbl>
+      <input type="text" id="f-url" placeholder="https://your-endpoint.com/v1/chat/completions" value="${esc(CFG.baseUrl)}" autocomplete="off">
+      <lbl style="margin-top:12px">API key <span style="font-weight:400;text-transform:none;letter-spacing:0">(if required)</span></lbl>
+      <div class="key-row">
+        <input type="password" id="f-key" placeholder="sk-..." value="${esc(CFG.apiKey)}" autocomplete="off">
+        <button class="icon-btn" type="button" onclick="togglePw(this)" aria-label="Show key"><i class="ti ti-eye" aria-hidden="true"></i></button>
+      </div>
+      <lbl style="margin-top:12px">Model</lbl>
+      <input type="text" id="f-model" placeholder="gpt-4o-mini" value="${esc(CFG.model)}">
+      <p class="hint">Works with any OpenAI-compatible Chat Completions API — OpenRouter, Groq, vLLM, LM Studio, Azure OpenAI, etc. The endpoint must allow direct browser requests (CORS); some providers' official APIs block this and need a small proxy server in front.</p>`;
+  }
+}
+
+function togglePw(btn){
+  const inp=btn.previousElementSibling;
+  if(inp.type==='password'){inp.type='text';btn.innerHTML='<i class="ti ti-eye-off" aria-hidden="true"></i>';}
+  else{inp.type='password';btn.innerHTML='<i class="ti ti-eye" aria-hidden="true"></i>';}
+}
+
+function readFormIntoCfg(){
+  const k=document.getElementById('f-key');
+  const m=document.getElementById('f-model');
+  if(k)CFG.apiKey=k.value.trim();
+  if(m)CFG.model=m.value.trim();
+  if(CFG.provider==='custom'){
+    const u=document.getElementById('f-url');
+    if(u)CFG.baseUrl=u.value.trim();
+  }
+}
+
+async function saveSet(){
+  readFormIntoCfg();
+  await saveCfg();
+  updateConnPill();
+  closeSet();
+}
+
+async function testConn(){
+  readFormIntoCfg();
+  const btn=document.getElementById('testBtn');
+  const out=document.getElementById('testRes');
+  btn.disabled=true;
+  out.innerHTML=`<div class="alert al-info" style="margin-top:10px;margin-bottom:0"><span class="dots"><span></span><span></span><span></span></span> Testing connection...</div>`;
+  try{
+    await callAI('Reply with exactly one word: OK',{maxTokens:10,json:false});
+    out.innerHTML=`<div class="alert al-ok" style="margin-top:10px;margin-bottom:0"><i class="ti ti-circle-check" aria-hidden="true"></i>Connected — ${esc(CFG.model||'model')} responded successfully.</div>`;
+  }catch(ex){
+    out.innerHTML=`<div class="alert al-err" style="margin-top:10px;margin-bottom:0"><i class="ti ti-alert-circle" aria-hidden="true"></i>${esc(ex.message||String(ex))}</div>`;
+  }
+  btn.disabled=false;
+}
+
+function httpErrMsg(status,detail){
+  const d=detail?` — ${detail}`:'';
+  if(status===401)return 'Invalid API key.'+d+' Check it in Settings.';
+  if(status===402)return 'Out of credits or quota for this provider.'+d;
+  if(status===403)return 'Access denied for this model or key.'+d;
+  if(status===429)return 'Rate limited — wait a moment and try again.'+d;
+  if(status>=500)return 'The AI provider is having issues right now.'+d+' Try again shortly.';
+  return `Request failed (${status}).`+d;
+}
+
+async function callAI(prompt,opts){
+  opts=opts||{};
+  const maxTokens=opts.maxTokens||4000;
+  const json=opts.json!==false;
+  const base=CFG.provider==='custom'?(CFG.baseUrl||'').trim():POLLINATIONS_BASE;
+  const model=(CFG.model||'').trim()||(CFG.provider==='pollinations'?'openai':'');
+  if(!base)throw new Error('No AI endpoint configured. Open Settings to add one.');
+  if(!model)throw new Error('No model name set. Open Settings to add one.');
+  const headers={'Content-Type':'application/json'};
+  if(CFG.apiKey)headers['Authorization']='Bearer '+CFG.apiKey;
+
+  async function attempt(withJsonMode){
+    const body={model:model,messages:[{role:'user',content:prompt}],temperature:0.3,max_tokens:maxTokens};
+    if(withJsonMode)body.response_format={type:'json_object'};
+    let resp;
+    try{
+      resp=await fetch(base,{method:'POST',headers:headers,body:JSON.stringify(body)});
+    }catch(netErr){
+      throw new Error('Could not reach the AI provider — check your connection, or the endpoint may be blocking direct browser requests (CORS).');
+    }
+    if(!resp.ok){
+      let detail='';
+      try{const e=await resp.json();detail=(e.error&&(e.error.message||e.error.code))||e.message||'';}catch(_){}
+      const err=new Error(httpErrMsg(resp.status,detail));
+      err.status=resp.status;
+      throw err;
+    }
+    const data=await resp.json();
+    const text=data.choices&&data.choices[0]&&data.choices[0].message&&data.choices[0].message.content;
+    if(!text)throw new Error('The provider returned an empty response. Try again, or switch models in Settings.');
+    return text;
+  }
+
+  if(json){
+    try{return await attempt(true);}
+    catch(ex){
+      if(ex.status===400)return await attempt(false);
+      throw ex;
+    }
+  }
+  return await attempt(false);
+}
+
+/* ---------- navigation ---------- */
+function go(t){
+  ['u','r','a'].forEach(p=>{
+    document.getElementById('pg-'+p).style.display=p===t?'block':'none';
+    document.getElementById('nb-'+p).classList.toggle('on',p===t);
+  });
+  if(t==='r'){document.getElementById('dv').style.display='none';document.getElementById('lv').style.display='block';rm();rt();}
+  if(t==='a')ra();
+}
+
+/* ---------- file reading ---------- */
+async function rf(file){
+  const ext=file.name.split('.').pop().toLowerCase();
+  if(ext==='txt')return new Promise(res=>{const fr=new FileReader();fr.onload=e=>res(e.target.result);fr.readAsText(file);});
+  if(ext==='pdf'){
+    try{
+      const ab=await file.arrayBuffer();
+      const pdf=await pdfjsLib.getDocument({data:ab}).promise;
+      let t='';
+      for(let i=1;i<=pdf.numPages;i++){const pg=await pdf.getPage(i);const tc=await pg.getTextContent();t+=tc.items.map(x=>x.str).join(' ')+'\n';}
+      return t;
+    }catch(e){return '';}
+  }
+  if(ext==='docx'){
+    try{const ab=await file.arrayBuffer();const r=await mammoth.extractRawText({arrayBuffer:ab});return r.value;}
+    catch(e){return '';}
+  }
+  return '';
+}
+
+async function ljdf(file){
+  if(!file)return;
+  sta(`<span class="dots"><span></span><span></span><span></span></span> Reading ${esc(file.name)}...`,'info');
+  const txt=await rf(file);
+  document.getElementById('jd').value=txt;
+  sta('','');
+  const ok=document.getElementById('jd-ok');
+  ok.style.display='block';
+  ok.innerHTML=`<div class="alert al-ok" style="margin:0"><i class="ti ti-circle-check" aria-hidden="true"></i>${esc(file.name)} loaded — ${txt.length.toLocaleString()} characters</div>`;
+}
+function djd(e){e.preventDefault();document.getElementById('jd-dz').classList.remove('over');if(e.dataTransfer.files[0])ljdf(e.dataTransfer.files[0]);}
+async function arf(files){for(const f of Array.from(files)){if(!S.resFiles.find(x=>x.name===f.name))S.resFiles.push(f);}rrl();}
+function dres(e){e.preventDefault();document.getElementById('r-dz').classList.remove('over');arf(e.dataTransfer.files);}
+function rmf(i){S.resFiles.splice(i,1);rrl();}
+function rrl(){
+  document.getElementById('r-list').innerHTML=S.resFiles.map((f,i)=>`
+    <div class="fp">
+      <i class="ti ti-file-text" style="font-size:16px;color:#378ADD" aria-hidden="true"></i>
+      <span class="fp-n">${esc(f.name)}</span>
+      <span class="fp-s">${(f.size/1024).toFixed(0)} KB</span>
+      <button class="fp-x" onclick="rmf(${i})" aria-label="Remove"><i class="ti ti-x" aria-hidden="true"></i></button>
+    </div>`).join('');
+}
+
+function sta(msg,type){
+  const el=document.getElementById('sta');
+  if(!msg){el.innerHTML='';return;}
+  const ic={info:'ti-loader',err:'ti-alert-circle',ok:'ti-circle-check'};
+  el.innerHTML=`<div class="alert al-${type||'info'}"><i class="ti ${ic[type]||'ti-info-circle'}" aria-hidden="true"></i><span>${msg}</span></div>`;
+}
+
+/* ---------- run analysis ---------- */
+async function run(){
+  const jd=document.getElementById('jd').value.trim();
+  if(!jd){sta('Please add a job description first.','err');return;}
+  if(!S.resFiles.length){sta('Please upload at least one resume.','err');return;}
+  if(!isConfigured()){
+    sta(`No AI provider configured yet. <button class="link-btn" onclick="openSet()">Open settings →</button>`,'err');
+    return;
+  }
+  S.cands=[];
+  const btn=document.getElementById('rbtn');
+  btn.disabled=true;
+
+  try{
+    const texts=[];
+    for(let i=0;i<S.resFiles.length;i++){
+      sta(`<span class="dots"><span></span><span></span><span></span></span> Extracting text from resume ${i+1} of ${S.resFiles.length}...`,'info');
+      const txt=await rf(S.resFiles[i]);
+      texts.push({name:S.resFiles[i].name,text:txt.slice(0,2500)});
+    }
+
+    sta(`<span class="dots"><span></span><span></span><span></span></span> Analyzing ${texts.length} resume(s)...`,'info');
+
+    const resTxt=texts.map((r,i)=>`--- RESUME ${i+1}: ${r.name} ---\n${r.text}`).join('\n\n');
+    const prompt=`You are an expert HR analyst. Analyze each resume against the job description. Return ONLY a valid JSON object — no markdown, no explanation, no extra text.
+
+JOB DESCRIPTION:
+${jd.slice(0,1800)}
+
+RESUMES:
+${resTxt}
+
+Return this exact JSON:
+{"candidates":[{"name":"string","email":"string or null","phone":"string or null","fileName":"string","skillScore":0-100,"experienceScore":0-100,"educationScore":0-100,"certificationScore":0-100,"keywordScore":0-100,"overallScore":number,"yearsExperience":number or null,"education":"string","matchedSkills":["skill1","skill2"],"missingSkills":["skill1","skill2"],"strengths":["s1","s2","s3"],"weaknesses":["w1","w2"],"experienceSummary":"one sentence","educationSummary":"one sentence","recommendation":"Highly Recommended|Recommended|Consider|Not Recommended","summary":"2-3 sentence candidate summary"}]}
+
+overallScore = (skillScore*0.40)+(experienceScore*0.30)+(educationScore*0.15)+(certificationScore*0.10)+(keywordScore*0.05). All scores 0-100.`;
+
+    const maxTok=Math.min(16000,1600+texts.length*650);
+    const result=await callAI(prompt,{maxTokens:maxTok,json:true});
+
+    const clean=result.replace(/```json|```/g,'').trim();
+    const jsonStart=clean.indexOf('{');
+    const jsonEnd=clean.lastIndexOf('}');
+    if(jsonStart===-1||jsonEnd===-1)throw new Error("The AI response wasn't valid JSON. Try again, or try a different model in Settings.");
+    const parsed=JSON.parse(clean.slice(jsonStart,jsonEnd+1));
+    if(!parsed.candidates||!parsed.candidates.length)throw new Error('No candidates came back. Try again.');
+
+    S.cands=parsed.candidates.sort((a,b)=>b.overallScore-a.overallScore);
+    sta(`Done — ${S.cands.length} candidate(s) ranked.`,'ok');
+    go('r');
+
+  }catch(ex){
+    sta('Error: '+esc(ex.message||String(ex)),'err');
+  }
+  btn.disabled=false;
+}
+
+const cat=s=>s>=85?'Excellent':s>=70?'Good':s>=50?'Moderate':'Poor';
+const bc=s=>s>=85?'#639922':s>=70?'#378ADD':s>=50?'#BA7517':'#E24B4A';
+const cbadge=c=>({Excellent:'bex',Good:'bgo',Moderate:'bmo',Poor:'bpo'}[c]||'bpo');
+const rbadge=r=>({'Highly Recommended':'bex','Recommended':'bgo','Consider':'bmo','Not Recommended':'bpo'}[r]||'bmo');
+const ini=n=>n.split(' ').slice(0,2).map(w=>w[0]||'').join('').toUpperCase()||'?';
+
+function rm(){
+  if(!S.cands.length){document.getElementById('mr').innerHTML='';return;}
+  const avg=Math.round(S.cands.reduce((a,c)=>a+c.overallScore,0)/S.cands.length);
+  document.getElementById('mr').innerHTML=`
+    <div class="mc"><div class="mc-l">Analyzed</div><div class="mc-v">${S.cands.length}</div><div class="mc-s">resume${S.cands.length!==1?'s':''}</div></div>
+    <div class="mc"><div class="mc-l">Avg match</div><div class="mc-v">${avg}%</div></div>
+    <div class="mc"><div class="mc-l">Top score</div><div class="mc-v">${Math.round(S.cands[0].overallScore)}%</div><div class="mc-s">${esc(S.cands[0].name.split(' ')[0])}</div></div>
+    <div class="mc"><div class="mc-l">Recommended</div><div class="mc-v">${S.cands.filter(c=>c.overallScore>=70).length}</div><div class="mc-s">70%+ match</div></div>`;
+}
+
+function rt(){
+  const flt=document.getElementById('cf')?.value||'';
+  const list=flt?S.cands.filter(c=>cat(c.overallScore)===flt):S.cands;
+  if(!S.cands.length){
+    document.getElementById('tb').innerHTML=`<tr><td colspan="7"><div class="empty"><i class="ti ti-inbox" aria-hidden="true"></i><span>No results yet — upload and analyze resumes first</span><button class="bs" onclick="go('u')"><i class="ti ti-upload" aria-hidden="true"></i>Go to Upload</button></div></td></tr>`;
+    return;
+  }
+  document.getElementById('tb').innerHTML=list.map((c,i)=>{
+    const s=Math.round(c.overallScore);
+    const col=bc(s);
+    const ct=cat(s);
+    const skills=(c.matchedSkills||[]).slice(0,2).map(sk=>`<span class="chip cm">${esc(sk)}</span>`).join('');
+    const more=(c.matchedSkills||[]).length>2?`<span class="chip">+${(c.matchedSkills||[]).length-2}</span>`:'';
+    return`<tr onclick="det(${S.cands.indexOf(c)})">
+      <td style="color:var(--color-text-tertiary);font-size:12px">${i+1}</td>
+      <td><div style="display:flex;align-items:center;gap:8px">
+        <div class="av" style="width:32px;height:32px;font-size:12px">${esc(ini(c.name))}</div>
+        <div><div style="font-weight:500;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:120px">${esc(c.name)}</div><div style="font-size:10px;color:var(--color-text-tertiary);overflow:hidden;text-overflow:ellipsis;max-width:120px">${esc(c.fileName)}</div></div>
+      </div></td>
+      <td><span style="font-weight:600;font-size:14px;color:${col}">${s}%</span><div class="sb"><div class="sf" style="width:${s}%;background:${col}"></div></div></td>
+      <td><span class="badge ${cbadge(ct)}">${ct}</span></td>
+      <td>${skills}${more}</td>
+      <td style="font-size:12px;color:var(--color-text-secondary)">${c.yearsExperience!=null?c.yearsExperience+'y':'—'}</td>
+      <td><span class="badge ${rbadge(c.recommendation)}" style="font-size:10px">${esc(c.recommendation||'—')}</span></td>
+    </tr>`;
+  }).join('');
+}
+
+function det(i){
+  const c=S.cands[i];
+  const s=Math.round(c.overallScore);
+  const col=bc(s);
+  const ct=cat(s);
+  const rows=[
+    {l:'Skill match (40%)',v:Math.round(c.skillScore)},
+    {l:'Experience (30%)',v:Math.round(c.experienceScore)},
+    {l:'Education (15%)',v:Math.round(c.educationScore)},
+    {l:'Certifications (10%)',v:Math.round(c.certificationScore)},
+    {l:'Keywords (5%)',v:Math.round(c.keywordScore)},
+  ];
+  document.getElementById('dv').innerHTML=`
+    <button class="back" onclick="document.getElementById('dv').style.display='none';document.getElementById('lv').style.display='block'"><i class="ti ti-arrow-left" aria-hidden="true"></i>Back to rankings</button>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">
+        <div style="display:flex;align-items:center;gap:13px">
+          <div class="av">${esc(ini(c.name))}</div>
+          <div>
+            <div style="font-size:19px;font-weight:600">${esc(c.name)}</div>
+            <div style="font-size:12px;color:var(--color-text-secondary);margin-top:2px">${esc([c.email,c.phone].filter(Boolean).join(' · '))||'Contact details not found in resume'}</div>
+            <div style="margin-top:7px"><span class="badge ${cbadge(ct)}">${ct}</span>&nbsp;<span class="badge ${rbadge(c.recommendation)}" style="font-size:10px">${esc(c.recommendation)}</span></div>
+          </div>
+        </div>
+        <div style="text-align:right"><div style="font-size:34px;font-weight:600;color:${col}">${s}%</div><div style="font-size:11px;color:var(--color-text-secondary)">overall match</div></div>
+      </div>
+      <div class="dv"></div>
+      <p style="font-size:13px;line-height:1.6;color:var(--color-text-secondary)">${esc(c.summary||'')}</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="ch"><i class="ti ti-adjustments-horizontal ch-icon" aria-hidden="true"></i><div><h2>Score breakdown</h2></div></div>
+        ${rows.map(r=>`<div class="pr"><div class="pl"><span>${r.l}</span><span style="font-weight:600">${r.v}%</span></div><div class="pb"><div class="pf" style="width:${r.v}%;background:${bc(r.v)}"></div></div></div>`).join('')}
+      </div>
+      <div class="card">
+        <div class="ch"><i class="ti ti-briefcase ch-icon" aria-hidden="true"></i><div><h2>Background</h2></div></div>
+        <lbl>Experience</lbl>
+        <p style="font-size:13px;margin-bottom:11px;color:var(--color-text-secondary)">${esc(c.experienceSummary||'—')}</p>
+        <lbl>Education</lbl>
+        <p style="font-size:13px;color:var(--color-text-secondary)">${esc(c.educationSummary||'—')}</p>
+        ${c.yearsExperience!=null?`<div class="dv"></div><p style="font-size:13px">Years of experience: <strong>${c.yearsExperience}</strong></p>`:''}
+      </div>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="ch"><i class="ti ti-circle-check" style="font-size:17px;color:#27500A" aria-hidden="true"></i><div><h2>Matched skills</h2><p>${(c.matchedSkills||[]).length} found</p></div></div>
+        <div>${(c.matchedSkills||[]).map(s2=>`<span class="chip cm">${esc(s2)}</span>`).join('')||'<span style="font-size:13px;color:var(--color-text-secondary)">None identified</span>'}</div>
+      </div>
+      <div class="card">
+        <div class="ch"><i class="ti ti-alert-triangle" style="font-size:17px;color:#791F1F" aria-hidden="true"></i><div><h2>Missing skills</h2><p>${(c.missingSkills||[]).length} gaps</p></div></div>
+        <div>${(c.missingSkills||[]).map(s2=>`<span class="chip cx">${esc(s2)}</span>`).join('')||'<span style="font-size:13px;color:var(--color-text-secondary)">No major gaps found</span>'}</div>
+      </div>
+    </div>
+    <div class="two">
+      <div class="card">
+        <div class="ch"><i class="ti ti-thumb-up" style="font-size:17px;color:#185FA5" aria-hidden="true"></i><div><h2>Strengths</h2></div></div>
+        ${(c.strengths||[]).map(s2=>`<div class="si"><i class="ti ti-check" style="font-size:14px;color:#27500A;margin-top:1px;flex-shrink:0" aria-hidden="true"></i><span>${esc(s2)}</span></div>`).join('')||'—'}
+      </div>
+      <div class="card">
+        <div class="ch"><i class="ti ti-clipboard-list" style="font-size:17px;color:#854F0B" aria-hidden="true"></i><div><h2>Areas to assess</h2></div></div>
+        ${(c.weaknesses||[]).map(s2=>`<div class="si"><i class="ti ti-point" style="font-size:14px;color:#BA7517;margin-top:1px;flex-shrink:0" aria-hidden="true"></i><span>${esc(s2)}</span></div>`).join('')||'—'}
+      </div>
+    </div>`;
+  document.getElementById('dv').style.display='block';
+  document.getElementById('lv').style.display='none';
+}
+
+function ra(){
+  if(!S.cands.length){
+    ['am','bc','pc','sg'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML='<p style="font-size:13px;color:var(--color-text-secondary);padding:8px 0">No data yet — run analysis first.</p>';});
+    return;
+  }
+  const scores=S.cands.map(c=>Math.round(c.overallScore));
+  const avg=Math.round(scores.reduce((a,b)=>a+b,0)/scores.length);
+  const cats={Excellent:0,Good:0,Moderate:0,Poor:0};
+  S.cands.forEach(c=>cats[cat(c.overallScore)]++);
+  document.getElementById('am').innerHTML=`
+    <div class="mc"><div class="mc-l">Total</div><div class="mc-v">${S.cands.length}</div></div>
+    <div class="mc"><div class="mc-l">Avg. score</div><div class="mc-v">${avg}%</div></div>
+    <div class="mc"><div class="mc-l">Highest</div><div class="mc-v">${Math.max(...scores)}%</div></div>
+    <div class="mc"><div class="mc-l">Recommended</div><div class="mc-v">${S.cands.filter(c=>c.overallScore>=70).length}</div></div>`;
+  document.getElementById('bc').innerHTML=S.cands.map(c=>{
+    const s=Math.round(c.overallScore);
+    const h=Math.round((s/100)*110);
+    const col=bc(s);
+    return`<div class="bb" style="height:${h}px;background:${col}" title="${esc(c.name)}: ${s}%"><span class="bv" style="color:${col}">${s}%</span><span class="bl">${esc(c.name.split(' ')[0].slice(0,6))}</span></div>`;
+  }).join('');
+  const catC={Excellent:'#639922',Good:'#378ADD',Moderate:'#BA7517',Poor:'#E24B4A'};
+  const total=S.cands.length;let ang=0;
+  const ent=Object.entries(cats).filter(([,v])=>v>0);
+  const cx=58,cy=58,r=50;
+  const paths=ent.map(([k,v])=>{
+    const p=v/total,a1=ang,a2=ang+p*2*Math.PI;
+    const x1=cx+r*Math.sin(a1),y1=cy-r*Math.cos(a1);
+    const x2=cx+r*Math.sin(a2),y2=cy-r*Math.cos(a2);
+    ang=a2;
+    return{k,v,p,col:catC[k],d:`M${cx},${cy}L${x1},${y1}A${r},${r},0,${p>.5?1:0},1,${x2},${y2}Z`};
+  });
+  document.getElementById('pc').innerHTML=`<div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap">
+    <svg width="116" height="116" viewBox="0 0 116 116">${paths.map(p=>`<path d="${p.d}" fill="${p.col}"/>`).join('')}</svg>
+    <div style="display:flex;flex-direction:column;gap:7px">${paths.map(p=>`<div class="pr-row"><div class="pd" style="background:${p.col}"></div><span>${p.k}: ${p.v} (${Math.round(p.p*100)}%)</span></div>`).join('')}</div>
+  </div>`;
+  const gaps={};
+  S.cands.forEach(c=>(c.missingSkills||[]).forEach(sk=>{gaps[sk]=(gaps[sk]||0)+1;}));
+  const top8=Object.entries(gaps).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  document.getElementById('sg').innerHTML=top8.length
+    ?top8.map(([sk,cnt])=>`<div class="pr"><div class="pl"><span>${esc(sk)}</span><span>${cnt}/${total} candidates</span></div><div class="pb"><div class="pf" style="width:${Math.round((cnt/top8[0][1])*100)}%;background:#E24B4A"></div></div></div>`).join('')
+    :'<p style="font-size:13px;color:var(--color-text-secondary)">No common skill gaps found.</p>';
+}
+
+function dcsv(){
+  if(!S.cands.length)return;
+  const rows=[['Rank','Name','Email','Score','Category','Recommendation','Matched Skills','Missing Skills','Exp.']];
+  S.cands.forEach((c,i)=>rows.push([i+1,c.name,c.email||'',Math.round(c.overallScore),cat(c.overallScore),c.recommendation||'',(c.matchedSkills||[]).join('; '),(c.missingSkills||[]).join('; '),c.yearsExperience||'']));
+  dl('screening.csv',rows.map(r=>r.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(',')).join('\n'),'text/csv');
+}
+function djson(){if(!S.cands.length)return;dl('screening.json',JSON.stringify(S.cands,null,2),'application/json');}
+function dl(n,c,t){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([c],{type:t}));a.download=n;a.click();}
+
+function clr(){
+  S.resFiles=[];S.cands=[];
+  document.getElementById('jd').value='';
+  document.getElementById('jd-ok').style.display='none';
+  document.getElementById('r-list').innerHTML='';
+  document.getElementById('jd-fi').value='';
+  document.getElementById('r-fi').value='';
+  sta('','');
+}
+
+/* ---------- init ---------- */
+(async function init(){
+  await loadCfg();
+  document.querySelectorAll('#provSeg .seg-b').forEach(b=>b.classList.toggle('on',b.dataset.p===CFG.provider));
+  renderProvFields();
+  updateConnPill();
+})();
+</script>
