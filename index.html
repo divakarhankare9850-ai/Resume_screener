@@ -293,7 +293,7 @@ if(typeof pdfjsLib!=='undefined')pdfjsLib.GlobalWorkerOptions.workerSrc='https:/
 const S={resFiles:[],cands:[]};
 
 /* ---------- AI provider config ---------- */
-const POLLINATIONS_BASE='https://gen.pollinations.ai/v1/chat/completions';
+const POLLINATIONS_BASE='/api/chat';
 let CFG={provider:'pollinations',apiKey:'',model:'openai',baseUrl:''};
 
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
